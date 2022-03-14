@@ -9,12 +9,17 @@ import {
 function App() {
   return (
     <Router>
-      <Route path="/" exact>
-        <Dashboard></Dashboard>
-      </Route>
-      <Route path="/login">
-        <Login></Login>
-      </Route>
+      <Switch>
+        <Route path="/" exact>
+          <Dashboard></Dashboard>
+        </Route>
+        <Route path="/login">
+          <Login></Login>
+        </Route>
+        <Route path="*">
+          <Error></Error>
+        </Route>
+      </Switch>
     </Router>
   );
 }
