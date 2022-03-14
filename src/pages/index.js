@@ -1,11 +1,7 @@
-import React from "react";
+import Dashboard from "./Dashboard";
+import AuthWrapper from "./AuthWrapper";
+import Login from "./Login";
+import Error from "./Error";
+import PrivateRoute from "./PrivateRoute";
 
-const index = () => {
-  return (
-    <div>
-      <h2>index</h2>
-    </div>
-  );
-};
-
-export default index;
+export { Dashboard, AuthWrapper, Login, Error, PrivateRoute };
