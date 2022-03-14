@@ -4,7 +4,8 @@ import { GithubContext } from "../context/context";
 
 const UserInfo = () => {
   const data = React.useContext(GithubContext);
-  return <h2>user info : {data} </h2>;
+  console.log(data);
+  return <h2>user info </h2>;
 };
 
 const Wrapper = styled.section`
