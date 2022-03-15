@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
 import { GithubContext } from "../context/context";
+import { ExampleChart } from "./Charts";
+import styled from "styled-components";
+import Charts from "fusioncharts/fusioncharts.charts";
 
 const Repos = () => {
   const { repos } = useContext(GithubContext);
-  console.log(repos);
-  return <div>Repos</div>;
+  return <ExampleChart />;
 };
 
 const Wrapper = styled.div`
