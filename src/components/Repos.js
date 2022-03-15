@@ -6,7 +6,29 @@ import Charts from "fusioncharts/fusioncharts.charts";
 
 const Repos = () => {
   const { repos } = useContext(GithubContext);
-  return <ExampleChart />;
+
+  const chartData = [
+    {
+      label: "HTML",
+      value: "13",
+    },
+    {
+      label: "CSS",
+      value: "23",
+    },
+    {
+      label: "JavaScript",
+      value: "80",
+    },
+  ];
+
+  return (
+    <section className="section">
+      <Wrapper className="section-center">
+        <ExampleChart data={chartData} />
+      </Wrapper>
+    </section>
+  );
 };
 
 const Wrapper = styled.div`
