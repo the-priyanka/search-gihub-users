@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { GithubContext } from "../context/context";
-import { ExampleChart, Pie3D } from "./Charts";
+import { Doughnut2d, ExampleChart, Pie3D } from "./Charts";
 import styled from "styled-components";
 import Charts from "fusioncharts/fusioncharts.charts";
 
@@ -46,7 +46,10 @@ const Repos = () => {
     <section className="section">
       <Wrapper className="section-center">
         <Pie3D data={languages} />
-        {/* <ExampleChart data={chartData} /> */}
+        <div></div>
+        <Doughnut2d data={chartData} />
+        <div></div>
+        <ExampleChart data={chartData} />
       </Wrapper>
     </section>
   );
