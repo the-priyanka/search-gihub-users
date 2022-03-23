@@ -1,6 +1,12 @@
 import React, { useContext } from "react";
 import { GithubContext } from "../context/context";
-import { Doughnut2d, ExampleChart, Pie3D } from "./Charts";
+import {
+  Bar3D,
+  Column3D,
+  Doughnut2d,
+  ExampleChart,
+  Pie3D,
+} from "./Charts";
 import styled from "styled-components";
 import Charts from "fusioncharts/fusioncharts.charts";
 
@@ -60,9 +66,9 @@ const Repos = () => {
     <section className="section">
       <Wrapper className="section-center">
         <Pie3D data={mostUsed} />
-        <div></div>
+        <Column3D data={chartData} />
         <Doughnut2d data={mostPopular} />
-        <div></div>
+        <Bar3D data={chartData} />
         <ExampleChart data={chartData} />
       </Wrapper>
     </section>
