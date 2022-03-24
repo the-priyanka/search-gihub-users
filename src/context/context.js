@@ -17,6 +17,8 @@ const GithubProvider = (props) => {
   // Request loading
   const [requests, setRequests] = useState(0);
   const [setLoading, setSetLoading] = useState(false);
+  // error
+  const [error, setError] = useState({ show: false, msg: "" });
 
   // check rate
   const checkRequest = () => {
@@ -25,20 +27,27 @@ const GithubProvider = (props) => {
         let {
           rate: { remaining },
         } = data;
+        remaining = 0;
         setRequests(remaining);
         if (remaining === 0) {
-          // throw an error.
+          toggleError(
+            true,
+            "sorry, you have exeeded your hourly rate limit!"
+          );
         }
       })
       .catch((err) => console.log(err));
   };
+  function toggleError(show = false, msg = "") {
+    setError({ show, msg });
+  }
 
   // error
   useEffect(checkRequest, []);
 
   return (
     <GithubContext.Provider
-      value={{ githubUser, repos, followers, requests }}
+      value={{ githubUser, repos, followers, requests, error }}
     >
       {props.children}
     </GithubContext.Provider>
