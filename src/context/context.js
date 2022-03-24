@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import mockUser from "./mockData.js/mockUser";
 import mockRepos from "./mockData.js/mockRepos";
 import mockFollowers from "./mockData.js/mockFollowers";
@@ -13,8 +14,32 @@ const GithubProvider = (props) => {
   const [githubUser, setGithubUser] = useState(mockUser);
   const [repos, setRepos] = useState(mockRepos);
   const [followers, setFollowers] = useState(mockFollowers);
+  // Request loading
+  const [requests, setRequests] = useState(0);
+  const [setLoading, setSetLoading] = useState(false);
+
+  // check rate
+  const checkRequest = () => {
+    axios(`${rootUrl}/rate_limit`)
+      .then(({ data }) => {
+        let {
+          rate: { remaining },
+        } = data;
+        setRequests(remaining);
+        if (remaining === 0) {
+          // throw an error.
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // error
+  useEffect(checkRequest, []);
+
   return (
-    <GithubContext.Provider value={{ githubUser, repos, followers }}>
+    <GithubContext.Provider
+      value={{ githubUser, repos, followers, requests }}
+    >
       {props.children}
     </GithubContext.Provider>
   );
