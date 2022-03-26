@@ -16,12 +16,13 @@ const GithubProvider = (props) => {
   const [followers, setFollowers] = useState(mockFollowers);
   // Request loading
   const [requests, setRequests] = useState(0);
-  const [setLoading, setSetLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   // error
   const [error, setError] = useState({ show: false, msg: "" });
 
   const searchGithubUsers = async (user) => {
     toggleError();
+    setIsLoading(true);
     const response = await axios(`${rootUrl}/users/${user}`).catch(
       (err) => console.log(err)
     );
@@ -30,6 +31,8 @@ const GithubProvider = (props) => {
     } else {
       toggleError(true, "there is no user with that username");
     }
+    checkRequest();
+    setIsLoading(false);
   };
 
   // check rate
@@ -65,6 +68,7 @@ const GithubProvider = (props) => {
         requests,
         error,
         searchGithubUsers,
+        isLoading,
       }}
     >
       {props.children}
