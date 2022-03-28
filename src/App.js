@@ -1,5 +1,5 @@
 import "./App.css";
-import { Dashboard, Error, Login } from "./pages";
+import { Dashboard, Error, Login, PrivateRoute } from "./pages";
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,9 +10,9 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact>
+        <PrivateRoute path="/" exact={true}>
           <Dashboard></Dashboard>
-        </Route>
+        </PrivateRoute>
         <Route path="/login">
           <Login></Login>
         </Route>

@@ -4,11 +4,11 @@ import {
   Bar3D,
   Column3D,
   Doughnut2d,
-  ExampleChart,
+  // ExampleChart,
   Pie3D,
 } from "./Charts";
 import styled from "styled-components";
-import Charts from "fusioncharts/fusioncharts.charts";
+// import Charts from "fusioncharts/fusioncharts.charts";
 
 const Repos = () => {
   const { repos } = useContext(GithubContext);
